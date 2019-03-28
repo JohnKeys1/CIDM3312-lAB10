@@ -8,12 +8,19 @@
 		<div class="col-4 border border-warning">
 			<form method="post">
     <div class="form-group">
-        <label class="control-label">First Name</label>
-        <input class="form-control" />
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+		<span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label class="control-label">Last Name</label>
-        <input class="form-control" />
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+		<span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+	<div class="form-group">
+        <label asp-for="Credit_card_Number" class="control-label"></label>
+        <input asp-for="Credit_card_Number" class="form-control" />
+		<span asp-validation-for="Credit_card_Number" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="submit" value="Submit" class="btn btn-primary" />
@@ -29,14 +36,18 @@
 
     <div class="row"> 
 		<div class="col-3 border">
-			Column One Row Two 
+			@Model.FirstName
+			
 		</div> 
 		<div class="col-5 border">
-			Column Two Row Two
+			@Model.LastName
 		</div> 
         <div class="col-4 border">
-			Column Three Row Two
+			@Model.Credit_card_Number
 		</div> 
 	</div>
 </div> 
 
+@section Scripts{
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
